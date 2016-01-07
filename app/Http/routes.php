@@ -20,6 +20,11 @@ Route::get(
   ['uses' => 'HomeController@index', 'as' => 'home']
 );
 
+Route::post(
+  '/notifications',
+  ['uses' => 'NotificationsController@create', 'as' => 'notifications.create']
+);
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
