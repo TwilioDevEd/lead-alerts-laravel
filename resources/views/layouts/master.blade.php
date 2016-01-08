@@ -12,12 +12,12 @@
     </head>
     <body>
         <div id="main" class="container">
-            @if (session('status') !== null)
+            @if (session('success') !== null)
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    {{ session('status') }}
+                    {{ session('success') }}
                 </div><!--alert-->
             @endif
             @yield('content')

@@ -17,12 +17,12 @@ Route::get('/', function () {
 
 Route::get(
   '/home',
-  ['uses' => 'HomeController@index', 'as' => 'home']
+  ['middleware' => 'web', 'uses' => 'HomeController@index', 'as' => 'home']
 );
 
 Route::post(
   '/notifications',
-  ['uses' => 'NotificationsController@create', 'as' => 'notifications.create']
+  ['middleware' => 'web', 'uses' => 'NotificationsController@create', 'as' => 'notifications.create']
 );
 
 /*

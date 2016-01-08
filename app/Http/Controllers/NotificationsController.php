@@ -26,8 +26,12 @@ class NotificationsController extends Controller
         $message    = $request->input('message');
 
         $formattedMessage = $this->formatMessage($houseTitle, $name, $phone, $message);
-
         $this->sendMessage($formattedMessage);
+
+        $request
+            ->session()
+            ->flash('success', 'Thanks! An agent will be contacting you shortly.');
+
         return redirect()->route('home');
     }
 

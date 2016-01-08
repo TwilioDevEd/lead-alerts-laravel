@@ -15,22 +15,20 @@
             questions you might have about this property. Fill out the form below
             with your contact information, and an agent will reach out soon.
         </p>
-        {!! Form::open(['url' => route('home')]) !!}
+        {!! Form::open(['url' => route('notifications.create')]) !!}
             <input type="hidden" name="houseTitle" value="{!! $house['title'] !!}" />
             <div class="form-group">
-                {!! Form::label('name') !!}
+                {!! Form::label('name', 'Your Name') !!}
                 {!! Form::text('name', '',
                   ['class' => 'form-control', 'placeholder' => 'John Appleseed']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('phone') !!}
+                {!! Form::label('phone', 'Your Phone Number') !!}
                 {!! Form::text('phone', '',
                   ['class' => 'form-control', 'placeholder' => '+16512229988']) !!}
             </div>
             <div class="form-group">
-                <label for="message">How can we help?</label>
-                <input type="text" id="message" name="message" class="form-control" />
-                {!! Form::label('message') !!}
+                {!! Form::label('message', 'How can we help?') !!}
                 {!! Form::text('message', '', ['class' => 'form-control']) !!}
             </div>
             <button type="submit" class="btn btn-primary">Request Info</button>
