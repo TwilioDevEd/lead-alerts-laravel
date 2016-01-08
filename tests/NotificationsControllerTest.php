@@ -8,8 +8,6 @@ class NotificationsControllerTest extends TestCase
 {
     public function testCreate()
     {
-        // $this->startSession();
-
         $mockClient   = Mockery::mock('Services_Twilio')->makePartial();
         $mockAccount  = Mockery::mock();
         $mockMessages = Mockery::mock();

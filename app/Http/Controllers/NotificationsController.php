@@ -26,11 +26,18 @@ class NotificationsController extends Controller
         $message    = $request->input('message');
 
         $formattedMessage = $this->formatMessage($houseTitle, $name, $phone, $message);
-        $this->sendMessage($formattedMessage);
 
-        $request
-            ->session()
-            ->flash('success', 'Thanks! An agent will be contacting you shortly.');
+        try {
+            $this->sendMessage($formattedMessage);
+            $request
+                ->session()
+                ->flash('success', 'Thanks! An agent will be contacting you shortly.');
+        } catch (Services_Twilio_RestException $e) {
+            echo $e->getMessage();
+            $request
+                ->session()
+                ->flash('error', 'Oops! There was an error. Please try again.');
+        }
 
         return redirect()->route('home');
     }
