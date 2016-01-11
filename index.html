@@ -1,0 +1,82 @@
+<!DOCTYPE html><html><head><title>Instant Lead Alerts</title><style>body, html {
+  height:100%;
+  width:100%;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  background-color:#ddd;
+}
+.wrapper {
+  height:100%;
+  width:100%;
+}</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="Instant Lead Alerts"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">Instant Lead Alerts</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>In this tutorial, we will learn how to instantly route leads to sales reps (in a real estate scenario) using text messages. Let's get started!</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Setting Up The Application" class="chapter"><div data-title="What Are We Building?" data-file="app/Providers/TwilioServiceProvider.php" class="step"><h2 id="what-are-we-building-">What Are We Building?</h2>
+<p>You probably already have landing pages or product detail views in your
+web application, which you&#39;re using to generate leads for your business.
+In this tutorial, we&#39;ll use Twilio SMS to send a message when a new lead
+is found.</p>
+<p><img src="//s3.amazonaws.com/howtodocs/lead-alerts-flow.png" alt="Lead Alerts Flow"></p>
+<p>In this example we&#39;ll be implementing instant lead alerts for real estate
+(much like <a href="//www.twilio.com/customers/stories/trulia">our awesome friends at
+Trulia</a>). We&#39;ll create a
+landing page for a new house on the market, and notify a real estate agent
+the moment a potential customer requests information.</p>
+</div><div data-title="Landing Page Data" data-file="app/Http/Controllers/HomeController.php" class="step"><h2 id="landing-page-data">Landing Page Data</h2>
+<p>To display a landing page for our house, we&#39;ll first need some data about
+the fictional house we&#39;ve put on the market. For demonstration purposes,
+we&#39;ve hard-coded an <em>associative array</em> containing information we need.</p>
+<hr>
+<p><strong>See Also:</strong></p>
+<ul>
+<li><a href="//laravel.com/docs/5.1/controllers#basic-controllers">Laravel Basic Controllers</a></li>
+<li><a href="//php.net/manual/en/language.types.array.php">PHP Array</a></li>
+</ul>
+</div><div data-title="Rendering the Landing Page" data-file="resources/views/home/index.blade.php" class="step"><h2 id="rendering-the-landing-page">Rendering the Landing Page</h2>
+<p>In our <em>blade template</em>, we insert data about the house, and in a sidebar
+include a form for the user to enter in their contact information to
+request more info about the home.</p>
+<hr>
+<p><strong>See Also:</strong></p>
+<ul>
+<li><a href="//laravel.com/docs/5.1/blade">Blade Templates</a></li>
+</ul>
+</div><div data-title="Creating a Twilio API Client" data-file="app/Providers/TwilioServiceProvider.php" data-highlight="15-22" class="step"><h2 id="creating-a-twilio-rest-api-client">Creating a Twilio REST API Client</h2>
+<p>Here we create a helper class with an authenticated Twilio REST
+API client that we can use anytime we need to send a text message. We
+initialize it with our <a href="//www.twilio.com/user/account/messaging/dashboard">Twilio Account Credentials</a> 
+stored as environment variables.</p>
+<hr>
+<p><strong>See Also:</strong></p>
+<ul>
+<li><a href="//www.twilio.com/docs/quickstart/php/sms/sending-via-rest">Twilio SMS and MMS Quickstart</a></li>
+<li><a href="https://laravel.com/docs/5.2/providers">Laravel Service Providers</a></li>
+</ul>
+</div><div data-title="Handling the POST Request" data-file="app/Http/Controllers/NotificationsController.php" data-highlight="21-54" class="step"><h2 id="handling-the-post-request">Handling the POST Request</h2>
+<p>This code handles the HTTP <code>POST</code> request issued by our landing page. It
+uses our <code>sendMessage</code> helper method to send a SMS message to the real estate
+agent&#39;s phone number, which is also set as a environment variable. We
+include the lead&#39;s name, phone number, and inquiry directly in the body of
+the text message we send to the agent.</p>
+<p>Now the agent has all the information they need to immediately follow up on the lead.</p>
+</div><div class="step"><h2 id="where-to-next-">Where to next?</h2>
+<p>That&#39;s it! We&#39;ve just implemented an application to instantly route leads
+to sales people using text messages. If you&#39;re a
+PHP developer working with Twilio, you might want to check out these
+other tutorials.</p>
+<p><a href="//www.twilio.com/docs/tutorials/walkthrough/browser-calls/php/laravel"><strong>Browser Calls</strong></a></p>
+<p>Twilio Client allows your users to make and receive phone calls in their
+web browsers.</p>
+<p><a href="//www.twilio.com/docs/tutorials/walkthrough/call-tracking/php/laravel"><strong>Call Tracking</strong></a></p>
+<p>Call Tracking helps you measure the effectiveness of marketing campaigns.</p>
+<h3 id="did-this-help-">Did this help?</h3>
+<p>Thanks for checking out this tutorial! If you have any feedback
+to share with us, we&#39;d love to hear it. Tweet
+<a href="//twitter.com/twilio">@twilio</a> to let us know what you
+think.
+Let&#39;s see how it works! Click the next arrow above to continue the tutorial.</p>
+</div></div>
+<div class="saurus-files" style="display:none;"><textarea class="saurus-file" data-file="app/Providers/TwilioServiceProvider.php" data-mode="php">PD9waHAKCm5hbWVzcGFjZSBBcHBcUHJvdmlkZXJzOwoKdXNlIElsbHVtaW5hdGVcU3VwcG9ydFxTZXJ2aWNlUHJvdmlkZXI7CnVzZSBTZXJ2aWNlc19Ud2lsaW87CgpjbGFzcyBUd2lsaW9TZXJ2aWNlUHJvdmlkZXIgZXh0ZW5kcyBTZXJ2aWNlUHJvdmlkZXIKewogICAgLyoqCiAgICAgKiBJbml0aWFsaXplcyBhbmQgcmVnaXN0ZXJzIFR3aWxpbyBTREsncyBvYmplY3QuCiAgICAgKgogICAgICogQHJldHVybiB2b2lkCiAgICAgKi8KICAgIHB1YmxpYyBmdW5jdGlvbiByZWdpc3RlcigpCiAgICB7CiAgICAgICAgJHRoaXMtPmFwcC0+YmluZCgnU2VydmljZXNfVHdpbGlvJywgZnVuY3Rpb24gKCRhcHApIHsKICAgICAgICAgICAgJGFjY291bnRTaWQgPSBjb25maWcoJ3NlcnZpY2VzLnR3aWxpbycpWydhY2NvdW50U2lkJ107CiAgICAgICAgICAgICRhdXRoVG9rZW4gID0gY29uZmlnKCdzZXJ2aWNlcy50d2lsaW8nKVsnYXV0aFRva2VuJ107CiAgICAgICAgICAgIHJldHVybiBuZXcgU2VydmljZXNfVHdpbGlvKCRhY2NvdW50U2lkLCAkYXV0aFRva2VuKTsKICAgICAgICB9KTsKICAgIH0KfQo=</textarea>
+<textarea class="saurus-file" data-file="app/Http/Controllers/HomeController.php" data-mode="php">PD9waHAKCm5hbWVzcGFjZSBBcHBcSHR0cFxDb250cm9sbGVyczsKCnVzZSBJbGx1bWluYXRlXEh0dHBcUmVxdWVzdDsKCnVzZSBBcHBcSHR0cFxSZXF1ZXN0czsKdXNlIEFwcFxIdHRwXENvbnRyb2xsZXJzXENvbnRyb2xsZXI7CgpjbGFzcyBIb21lQ29udHJvbGxlciBleHRlbmRzIENvbnRyb2xsZXIKewogICAgcHVibGljIGZ1bmN0aW9uIGluZGV4KCkKICAgIHsKICAgICAgICAkaG91c2UgPSBbCiAgICAgICAgICAgICd0aXRsZScgPT4gJzU1NSBTdW5ueWJyb29rIExhbmUnLAogICAgICAgICAgICAncHJpY2UnID0+ICckMzQ5LDk5OScsCiAgICAgICAgICAgICdkZXNjcmlwdGlvbicgPT4gJ1lvdSBhbmQgeW91ciBmYW1pbHkgd2lsbCBsb3ZlIHRoaXMgY2hhcm1pbmcgaG9tZS4gJyAuCiAgICAgICAgICAgICdGZWF0dXJpbmcgZ3Jhbml0ZSBhcHBsaWFuY2VzLCBzdGFpbmxlc3Mgc3RlZWwgd2luZG93cywgYW5kICcgLgogICAgICAgICAgICAnaGlnaCBlZmZpY2llbmN5IGR1YWwgbXVkIHJvb21zLCB0aGlzIGpvaW50IGlzIGxvYWRlZCB0byB0aGUgbWF4LiAnIC4KICAgICAgICAgICAgJ01vdGl2YXRlZCBzZWxsZXJzIGhhdmUgcHJpY2VkIGZvciBhIHF1aWNrIHNhbGUsIGFjdCBub3chJwogICAgICAgIF07CgogICAgICAgIHJldHVybiB2aWV3KCdob21lLmluZGV4JywgWyAnaG91c2UnID0+ICRob3VzZSBdKTsKICAgIH0KfQo=</textarea>
+<textarea class="saurus-file" data-file="resources/views/home/index.blade.php" data-mode="php">QGV4dGVuZHMoJ2xheW91dHMubWFzdGVyJykKCkBzZWN0aW9uKCdjb250ZW50JykKPGRpdiBjbGFzcz0icm93Ij4KICAgIDxkaXYgY2xhc3M9ImNvbC1zbS04Ij4KICAgICAgICA8aDE+eyEhICRob3VzZVsndGl0bGUnXSAhIX08L2gxPgogICAgICAgIDxoMz57ISEgJGhvdXNlWydwcmljZSddICEhfTwvaDM+CiAgICAgICAgPGltZyBzcmM9ImltYWdlcy9ob3VzZS5qcGciIGFsdD0iSG91c2UiIC8+CiAgICAgICAgPHA+eyEhICRob3VzZVsnZGVzY3JpcHRpb24nXSAhIX08L3A+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImNvbC1zbS0yIGRlbW8iPgogICAgICAgIDxoND5UYWxrIFRvIEFuIEFnZW50PC9oND4KICAgICAgICA8cD4KICAgICAgICAgICAgQSB0cmFpbmVkIHJlYWwgZXN0YXRlIHByb2Zlc3Npb25hbCBpcyBzdGFuZGluZyBieSB0byBhbnN3ZXIgYW55CiAgICAgICAgICAgIHF1ZXN0aW9ucyB5b3UgbWlnaHQgaGF2ZSBhYm91dCB0aGlzIHByb3BlcnR5LiBGaWxsIG91dCB0aGUgZm9ybSBiZWxvdwogICAgICAgICAgICB3aXRoIHlvdXIgY29udGFjdCBpbmZvcm1hdGlvbiwgYW5kIGFuIGFnZW50IHdpbGwgcmVhY2ggb3V0IHNvb24uCiAgICAgICAgPC9wPgogICAgICAgIHshISBGb3JtOjpvcGVuKFsndXJsJyA9PiByb3V0ZSgnbm90aWZpY2F0aW9ucy5jcmVhdGUnKV0pICEhfQogICAgICAgICAgICA8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJob3VzZVRpdGxlIiB2YWx1ZT0ieyEhICRob3VzZVsndGl0bGUnXSAhIX0iIC8+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvcm0tZ3JvdXAiPgogICAgICAgICAgICAgICAgeyEhIEZvcm06OmxhYmVsKCduYW1lJywgJ1lvdXIgTmFtZScpICEhfQogICAgICAgICAgICAgICAgeyEhIEZvcm06OnRleHQoJ25hbWUnLCAnJywKICAgICAgICAgICAgICAgICAgWydjbGFzcycgPT4gJ2Zvcm0tY29udHJvbCcsICdwbGFjZWhvbGRlcicgPT4gJ0pvaG4gQXBwbGVzZWVkJ10pICEhfQogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0iZm9ybS1ncm91cCI+CiAgICAgICAgICAgICAgICB7ISEgRm9ybTo6bGFiZWwoJ3Bob25lJywgJ1lvdXIgUGhvbmUgTnVtYmVyJykgISF9CiAgICAgICAgICAgICAgICB7ISEgRm9ybTo6dGV4dCgncGhvbmUnLCAnJywKICAgICAgICAgICAgICAgICAgWydjbGFzcycgPT4gJ2Zvcm0tY29udHJvbCcsICdwbGFjZWhvbGRlcicgPT4gJysxNjUxMjIyOTk4OCddKSAhIX0KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvcm0tZ3JvdXAiPgogICAgICAgICAgICAgICAgeyEhIEZvcm06OmxhYmVsKCdtZXNzYWdlJywgJ0hvdyBjYW4gd2UgaGVscD8nKSAhIX0KICAgICAgICAgICAgICAgIHshISBGb3JtOjp0ZXh0KCdtZXNzYWdlJywgJycsIFsnY2xhc3MnID0+ICdmb3JtLWNvbnRyb2wnXSkgISF9CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICA8YnV0dG9uIHR5cGU9InN1Ym1pdCIgY2xhc3M9ImJ0biBidG4tcHJpbWFyeSI+UmVxdWVzdCBJbmZvPC9idXR0b24+CiAgICAgICAgeyEhIEZvcm06OmNsb3NlKCkgISF9CiAgICA8L2Rpdj4KPC9kaXY+CkBlbmRzZWN0aW9uCg==</textarea>
+<textarea class="saurus-file" data-file="app/Http/Controllers/NotificationsController.php" data-mode="php">PD9waHAKCm5hbWVzcGFjZSBBcHBcSHR0cFxDb250cm9sbGVyczsKCnVzZSBJbGx1bWluYXRlXEh0dHBcUmVxdWVzdDsKCnVzZSBBcHBcSHR0cFxSZXF1ZXN0czsKdXNlIEFwcFxIdHRwXENvbnRyb2xsZXJzXENvbnRyb2xsZXI7Cgp1c2UgU2VydmljZXNfVHdpbGlvOwoKY2xhc3MgTm90aWZpY2F0aW9uc0NvbnRyb2xsZXIgZXh0ZW5kcyBDb250cm9sbGVyCnsKICAgIHByb3RlY3RlZCAkY2xpZW50OwoKICAgIHB1YmxpYyBmdW5jdGlvbiBfX2NvbnN0cnVjdChTZXJ2aWNlc19Ud2lsaW8gJGNsaWVudCkKICAgIHsKICAgICAgICAkdGhpcy0+Y2xpZW50ID0gJGNsaWVudDsKICAgIH0KCiAgICBwdWJsaWMgZnVuY3Rpb24gY3JlYXRlKFJlcXVlc3QgJHJlcXVlc3QpCiAgICB7CiAgICAgICAgJGhvdXNlVGl0bGUgPSAkcmVxdWVzdC0+aW5wdXQoJ2hvdXNlVGl0bGUnKTsKICAgICAgICAkbmFtZSAgICAgICA9ICRyZXF1ZXN0LT5pbnB1dCgnbmFtZScpOwogICAgICAgICRwaG9uZSAgICAgID0gJHJlcXVlc3QtPmlucHV0KCdwaG9uZScpOwogICAgICAgICRtZXNzYWdlICAgID0gJHJlcXVlc3QtPmlucHV0KCdtZXNzYWdlJyk7CgogICAgICAgICRmb3JtYXR0ZWRNZXNzYWdlID0gJHRoaXMtPmZvcm1hdE1lc3NhZ2UoJGhvdXNlVGl0bGUsICRuYW1lLCAkcGhvbmUsICRtZXNzYWdlKTsKCiAgICAgICAgdHJ5IHsKICAgICAgICAgICAgJHRoaXMtPnNlbmRNZXNzYWdlKCRmb3JtYXR0ZWRNZXNzYWdlKTsKICAgICAgICAgICAgJHJlcXVlc3QKICAgICAgICAgICAgICAgIC0+c2Vzc2lvbigpCiAgICAgICAgICAgICAgICAtPmZsYXNoKCdzdWNjZXNzJywgJ1RoYW5rcyEgQW4gYWdlbnQgd2lsbCBiZSBjb250YWN0aW5nIHlvdSBzaG9ydGx5LicpOwogICAgICAgIH0gY2F0Y2ggKFNlcnZpY2VzX1R3aWxpb19SZXN0RXhjZXB0aW9uICRlKSB7CiAgICAgICAgICAgIGVjaG8gJGUtPmdldE1lc3NhZ2UoKTsKICAgICAgICAgICAgJHJlcXVlc3QKICAgICAgICAgICAgICAgIC0+c2Vzc2lvbigpCiAgICAgICAgICAgICAgICAtPmZsYXNoKCdlcnJvcicsICdPb3BzISBUaGVyZSB3YXMgYW4gZXJyb3IuIFBsZWFzZSB0cnkgYWdhaW4uJyk7CiAgICAgICAgfQoKICAgICAgICByZXR1cm4gcmVkaXJlY3QoKS0+cm91dGUoJ2hvbWUnKTsKICAgIH0KCiAgICBwcml2YXRlIGZ1bmN0aW9uIHNlbmRNZXNzYWdlKCRtZXNzYWdlKQogICAgewogICAgICAgICR0d2lsaW9QaG9uZU51bWJlciA9IGNvbmZpZygnc2VydmljZXMudHdpbGlvJylbJ3R3aWxpb1Bob25lTnVtYmVyJ107CiAgICAgICAgJGFnZW50UGhvbmVOdW1iZXIgPSBjb25maWcoJ3NlcnZpY2VzLnR3aWxpbycpWydhZ2VudFBob25lTnVtYmVyJ107CiAgICAgICAgJHRoaXMtPmNsaWVudC0+YWNjb3VudC0+bWVzc2FnZXMtPnNlbmRNZXNzYWdlKAogICAgICAgICAgICAkdHdpbGlvUGhvbmVOdW1iZXIsCiAgICAgICAgICAgICRhZ2VudFBob25lTnVtYmVyLAogICAgICAgICAgICAkbWVzc2FnZQogICAgICAgICk7CiAgICB9CgogICAgcHJpdmF0ZSBmdW5jdGlvbiBmb3JtYXRNZXNzYWdlKCRob3VzZVRpdGxlLCAkbmFtZSwgJHBob25lLCAkbWVzc2FnZSkKICAgIHsKICAgICAgICByZXR1cm4KICAgICAgICAgICAgIk5ldyBsZWFkIHJlY2VpdmVkIGZvciAkaG91c2VUaXRsZS4gIiAuCiAgICAgICAgICAgICJDYWxsICRuYW1lIGF0ICRwaG9uZS4gIiAuCiAgICAgICAgICAgICJNZXNzYWdlOiAkbWVzc2FnZSI7CiAgICB9Cn0K</textarea>
+</div>
+</div><div class="saurus-overview"><ul></ul></div></div><div class="saurus-code"><div class="file-path"><span class="crumb-container"></span><i class="fa fa-fw fa-folder"></i></div><div class="saurus-editor"></div></div><div class="saurus-explorer"><div class="saurus-file-list"></div><a href="https://github.com/TwilioDevEd/lead-alerts-laravel" target="_blank" class="explorer-get-code"> <i class="fa fa-lg fa-github-square"> </i>View Code on GitHub</a></div></div></div></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script><script src="ace/ace.js"></script><script src="ace/theme-monokai.js"></script><script src="viewsaurus.js"></script></body></html>

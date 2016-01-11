@@ -1,7 +1,7 @@
 .chapter(data-title='Setting Up The Application')
-    .step(
-        data-title='What Are We Building?',
-        data-file='resources/views/home/index.blade.php')
+  .step(
+      data-title='What Are We Building?',
+      data-file='app/Providers/TwilioServiceProvider.php')
     :markdown
       ## What Are We Building?
 
@@ -18,4 +18,91 @@
       landing page for a new house on the market, and notify a real estate agent
       the moment a potential customer requests information.
 
+  .step(
+    data-title='Landing Page Data', 
+    data-file='app/Http/Controllers/HomeController.php')
+    :markdown
+      ## Landing Page Data
+
+      To display a landing page for our house, we'll first need some data about
+      the fictional house we've put on the market. For demonstration purposes,
+      we've hard-coded an _associative array_ containing information we need.
+
+      ---
+
+      **See Also:**
+      * [Laravel Basic Controllers](//laravel.com/docs/5.1/controllers#basic-controllers)
+      * [PHP Array](//php.net/manual/en/language.types.array.php)
+
+  .step(data-title='Rendering the Landing Page', 
+    data-file='resources/views/home/index.blade.php')
+    :markdown
+      ## Rendering the Landing Page
+
+      In our _blade template_, we insert data about the house, and in a sidebar
+      include a form for the user to enter in their contact information to
+      request more info about the home.
+
+      ---
+
+      **See Also:**
+      * [Blade Templates](//laravel.com/docs/5.1/blade)
+
+  .step(
+    data-title='Creating a Twilio API Client', 
+    data-file='app/Providers/TwilioServiceProvider.php',
+    data-highlight='15-22')
+    :markdown
+      ## Creating a Twilio REST API Client
+
+      Here we create a helper class with an authenticated Twilio REST
+      API client that we can use anytime we need to send a text message. We
+      initialize it with our [Twilio Account Credentials](//www.twilio.com/user/account/messaging/dashboard) 
+      stored as environment variables.
+
+      ---
+
+      **See Also:**
+      * [Twilio SMS and MMS Quickstart](//www.twilio.com/docs/quickstart/php/sms/sending-via-rest)
+      * [Laravel Service Providers](https://laravel.com/docs/5.2/providers)
+
+  .step(
+    data-title='Handling the POST Request', 
+    data-file='app/Http/Controllers/NotificationsController.php',
+    data-highlight='21-54')
+    :markdown
+      ## Handling the POST Request
+
+      This code handles the HTTP `POST` request issued by our landing page. It
+      uses our `sendMessage` helper method to send a SMS message to the real estate
+      agent's phone number, which is also set as a environment variable. We
+      include the lead's name, phone number, and inquiry directly in the body of
+      the text message we send to the agent.
+
+      Now the agent has all the information they need to immediately follow up on the lead.
+
+  .step
+    :markdown
+      ## Where to next?
+
+      That's it! We've just implemented an application to instantly route leads
+      to sales people using text messages. If you're a
+      PHP developer working with Twilio, you might want to check out these
+      other tutorials.
+
+      [**Browser Calls**](//www.twilio.com/docs/tutorials/walkthrough/browser-calls/php/laravel)
+
+      Twilio Client allows your users to make and receive phone calls in their
+      web browsers.
+
+      [**Call Tracking**](//www.twilio.com/docs/tutorials/walkthrough/call-tracking/php/laravel)
+
+      Call Tracking helps you measure the effectiveness of marketing campaigns.
+
+      ### Did this help?
+
+      Thanks for checking out this tutorial! If you have any feedback
+      to share with us, we'd love to hear it. Tweet
+      [@twilio](//twitter.com/twilio) to let us know what you
+      think.
       Let's see how it works! Click the next arrow above to continue the tutorial.
