@@ -8,7 +8,7 @@ use Services_Twilio;
 class TwilioServiceProvider extends ServiceProvider
 {
     /**
-     * Register the application services.
+     * Initializes and registers Twilio SDK's object.
      *
      * @return void
      */
