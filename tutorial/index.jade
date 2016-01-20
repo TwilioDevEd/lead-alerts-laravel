@@ -39,8 +39,8 @@
     :markdown
       ## Rendering the Landing Page
 
-      In our _blade template_, we insert data about the house, and in a sidebar
-      include a form for the user to enter in their contact information to
+      In our _blade template_, we'll insert data about the house. We'll use a sidebar to
+      include a form for the user to enter in their contact information. That way, they can
       request more info about the home.
 
       ---
@@ -76,7 +76,7 @@
       This code handles the HTTP `POST` request issued by our landing page. It
       uses our `sendMessage` helper method to send a SMS message to the real estate
       agent's phone number, which is also set as a environment variable. We
-      include the lead's name, phone number, and inquiry directly in the body of
+      include the lead's name, phone number, and inquiry directly into the body of
       the text message we send to the agent.
 
       Now the agent has all the information they need to immediately follow up on the lead.
