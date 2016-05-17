@@ -9,28 +9,32 @@ a real estate listing or other high value channel.
 
 [![Build Status](https://travis-ci.org/TwilioDevEd/lead-alerts-laravel.svg)](https://travis-ci.org/TwilioDevEd/lead-alerts-laravel)
 
-1. Clone this repository and `cd` into its directory:
+1. Clone this repository and `cd` into it.
    ```
    git clone git@github.com:TwilioDevEd/lead-alerts-laravel.git
    cd lead-lerts-laravel
    ```
 
 1. Install the application's dependencies with [Composer](https://getcomposer.org/)
+
   ```bash
   $ composer install
   ```
 
 1. Copy the sample configuration file and edit it to _match your configuration_.
+
    ```bash
    $ cp .env.example .env
    ```
 
-1. Generate an `APP_KEY`:
+1. Generate an `APP_KEY`.
+
    ```bash
    $ php artisan key:generate
    ```
 
 1. Run the application using Artisan.
+
    ```bash
    $ php artisan serve
    ```
@@ -39,7 +43,7 @@ a real estate listing or other high value channel.
 
 ## Run the tests
 
-1. Run at the top-level directory:
+1. Run at the top-level directory.
 
    ```bash
    $ phpunit
