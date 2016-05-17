@@ -18,8 +18,10 @@
       landing page for a new house on the market, and notify a real estate agent
       the moment a potential customer requests information.
 
+      Let's see how it works! Click the next arrow above to continue the tutorial.
+
   .step(
-    data-title='Landing Page Data', 
+    data-title='Landing Page Data',
     data-file='app/Http/Controllers/HomeController.php')
     :markdown
       ## Landing Page Data
@@ -34,14 +36,13 @@
       * [Laravel Basic Controllers](//laravel.com/docs/5.1/controllers#basic-controllers)
       * [PHP Array](//php.net/manual/en/language.types.array.php)
 
-  .step(data-title='Rendering the Landing Page', 
+  .step(data-title='Rendering the Landing Page',
     data-file='resources/views/home/index.blade.php')
     :markdown
       ## Rendering the Landing Page
 
-      In our _blade template_, we'll insert data about the house. We'll use a sidebar to
-      include a form for the user to enter in their contact information. That way, they can
-      request more info about the home.
+      In our _blade template_ we'll insert data about the house and in a sidebar
+      we include a form for the user. Here they enter their contact information and request more info about the home.
 
       ---
 
@@ -49,15 +50,15 @@
       * [Blade Templates](//laravel.com/docs/5.1/blade)
 
   .step(
-    data-title='Creating a Twilio API Client', 
+    data-title='Creating a Twilio API Client',
     data-file='app/Providers/TwilioServiceProvider.php',
     data-highlight='15-22')
     :markdown
       ## Creating a Twilio REST API Client
 
-      Here we create a helper class with an authenticated Twilio REST
-      API client that we can use anytime we need to send a text message. We
-      initialize it with our [Twilio Account Credentials](//www.twilio.com/user/account/messaging/dashboard) 
+      Here we create a helper class with an authenticated [Twilio REST
+      API](https://twilio.github.io/twilio-php/class-Twilio.Rest.Client.html) client that we can use anytime we need to send a text message. We
+      initialize it with our [Twilio Account Credentials](//www.twilio.com/user/account/messaging/dashboard)
       stored as environment variables.
 
       ---
@@ -67,7 +68,7 @@
       * [Laravel Service Providers](https://laravel.com/docs/5.2/providers)
 
   .step(
-    data-title='Handling the POST Request', 
+    data-title='Handling the POST Request',
     data-file='app/Http/Controllers/NotificationsController.php',
     data-highlight='21-54')
     :markdown
@@ -102,7 +103,5 @@
       ### Did this help?
 
       Thanks for checking out this tutorial! If you have any feedback
-      to share with us, we'd love to hear it. Tweet
-      [@twilio](//twitter.com/twilio) to let us know what you
-      think.
-      Let's see how it works! Click the next arrow above to continue the tutorial.
+      to share with us, we'd love to hear it.
+      [Contact the Twilio Developer Education Team](mailto:deved-oss@twilio.com) to let us know what you think.
