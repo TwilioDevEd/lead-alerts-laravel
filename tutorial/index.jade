@@ -5,9 +5,9 @@
     :markdown
       ## What Are We Building?
 
-      You probably already have landing pages or product detail views in your
-      web application, which you're using to generate leads for your business.
-      In this tutorial, we'll use Twilio SMS to send a message when a new lead
+      You probably already have landing pages or product detail views you're
+      using to generate leads for your business on your web application.
+      On this tutorial we'll use Twilio SMS to send a message when a new lead
       is found.
 
       ![Lead Alerts Flow](//s3.amazonaws.com/howtodocs/lead-alerts-flow.png)
@@ -28,7 +28,7 @@
 
       To display a landing page for our house, we'll first need some data about
       the fictional house we've put on the market. For demonstration purposes,
-      we've hard-coded an _associative array_ containing information we need.
+      we've hard-coded an _associative array_ containing the information we need.
 
       ---
 
@@ -42,7 +42,8 @@
       ## Rendering the Landing Page
 
       In our _blade template_ we'll insert data about the house and in a sidebar
-      we include a form for the user. Here they enter their contact information and request more info about the home.
+      we include a form for the user. Here they enter their contact information and
+      request more info about the property.
 
       ---
 
@@ -75,12 +76,12 @@
       ## Handling the POST Request
 
       This code handles the HTTP `POST` request issued by our landing page. It
-      uses our `sendMessage` helper method to send a SMS message to the real estate
+      uses our `sendMessage` helper method to send an SMS message to the real estate
       agent's phone number, which is also set as a environment variable. We
       include the lead's name, phone number, and inquiry directly into the body of
       the text message we send to the agent.
 
-      Now the agent has all the information they need to immediately follow up on the lead.
+      Now the agent has all the information he/she needs to immediately follow up on the lead.
 
   .step
     :markdown
@@ -88,8 +89,8 @@
 
       That's it! We've just implemented an application to instantly route leads
       to sales people using text messages. If you're a
-      PHP developer working with Twilio, you might want to check out these
-      other tutorials.
+      PHP developer working with Twilio, you might want to check these
+      other tutorials out.
 
       [**Browser Calls**](//www.twilio.com/docs/tutorials/walkthrough/browser-calls/php/laravel)
 
