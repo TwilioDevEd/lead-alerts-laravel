@@ -4,26 +4,32 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+use Twilio\Rest\Client;
+
 class NotificationsControllerTest extends TestCase
 {
     public function testCreate()
     {
-        $mockClient   = Mockery::mock('Services_Twilio')->makePartial();
-        $mockAccount  = Mockery::mock();
+        $mockClient   = Mockery::mock(Client::class)->makePartial();
         $mockMessages = Mockery::mock();
-        $mockClient->account   = $mockAccount;
-        $mockAccount->messages = $mockMessages;
+        $mockClient->messages = $mockMessages;
         $twilioPhoneNumber = config('services.twilio')['twilioPhoneNumber'];
         $agentPhoneNumber  = config('services.twilio')['agentPhoneNumber'];
         $message = "New lead received for house-title. Call name at phone. Message: message";
 
         $mockMessages
-            ->shouldReceive('sendMessage')
-            ->with($twilioPhoneNumber, $agentPhoneNumber, $message)
+            ->shouldReceive('create')
+            ->with(
+                $agentPhoneNumber,
+                array(
+                    'from' => $twilioPhoneNumber,
+                    'body' => $message
+                )
+            )
             ->once();
 
         $this->app->instance(
-            'Services_Twilio',
+            Client::class,
             $mockClient
         );
 

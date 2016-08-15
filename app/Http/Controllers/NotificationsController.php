@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Services_Twilio;
+use Twilio\Rest\Client;
 
 class NotificationsController extends Controller
 {
     protected $client;
 
-    public function __construct(Services_Twilio $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
     }
@@ -32,7 +32,7 @@ class NotificationsController extends Controller
             $request
                 ->session()
                 ->flash('success', 'Thanks! An agent will be contacting you shortly.');
-        } catch (Services_Twilio_RestException $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
             $request
                 ->session()
@@ -46,10 +46,12 @@ class NotificationsController extends Controller
     {
         $twilioPhoneNumber = config('services.twilio')['twilioPhoneNumber'];
         $agentPhoneNumber = config('services.twilio')['agentPhoneNumber'];
-        $this->client->account->messages->sendMessage(
-            $twilioPhoneNumber,
+        $this->client->messages->create(
             $agentPhoneNumber,
-            $message
+            array(
+                'from' => $twilioPhoneNumber,
+                'body' => $message
+            )
         );
     }
 
