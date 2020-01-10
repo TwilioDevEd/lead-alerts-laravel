@@ -9,6 +9,8 @@ a real estate listing or other high value channel.
 
 [![Build Status](https://travis-ci.org/TwilioDevEd/lead-alerts-laravel.svg)](https://travis-ci.org/TwilioDevEd/lead-alerts-laravel)
 
+> We are currently in the process of updating this sample template. If you are encountering any issues with the sample, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues) and we'll try to help you.
+
 1. Clone this repository and `cd` into it.
    ```
    git clone git@github.com:TwilioDevEd/lead-alerts-laravel.git
