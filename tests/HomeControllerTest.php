@@ -8,7 +8,7 @@ class HomeControllerTest extends TestCase
 {
     public function testIndex()
     {
-        $this->call('GET', route('home'));
-        $this->assertResponseOk();
+        $response = $this->call('GET', route('home'));
+        $response->assertSuccessful();
     }
 }
