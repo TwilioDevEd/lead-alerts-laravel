@@ -44,7 +44,8 @@ class NotificationsControllerTest extends TestCase
                 '_token'     => csrf_token()]
         );
 
-        $this->assertResponseStatus(302);
-        $this->assertRedirectedToRoute('home');
+        $this->assertEquals($response->getStatusCode(), 302);
+        $response->assertRedirect(route('home'));
+
     }
 }
